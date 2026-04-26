@@ -78,7 +78,7 @@ hands = mp_hands.Hands(
     min_detection_confidence=0.5
 )
 # Paths
-path = "../../data/raw/session1" # or session2
+path = "../data/raw/session1"  # or session2
 out = "../../data/processed/session1" # or session2
 imgs = os.listdir(path)
 
