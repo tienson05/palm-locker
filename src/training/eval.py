@@ -26,7 +26,7 @@ probe_loader = DataLoader(probe_dataset, batch_size=64, shuffle=False) # final b
 
 # Model
 model = PalmNet().to(device)
-model.load_state_dict(torch.load("../../models/palmnet_v1.pth", map_location=device))
+model.load_state_dict(torch.load(f"../../models/{exp_name}.pth", map_location=device))
 model.eval()
 
 # COMPUTE EMBEDDINGS: gallery_emb = (1200, 128); gallery_labels = (1200,)

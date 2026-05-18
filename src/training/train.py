@@ -17,10 +17,10 @@ from src.transforms.transform_pipeline import train_transform, eval_transform
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_path", type=str, required=True)
-    parser.add_argument("--val_path", type=str, required=True)
+    parser.add_argument("--train_path", type=str, default="../../data/splits/train")
+    parser.add_argument("--val_path", type=str, default="../../data/splits/valid")
 
-    parser.add_argument("--model_name", type=str, default="palmnet")
+    parser.add_argument("--model_name", type=str, default="palmnet_test")
     parser.add_argument("--save_dir", "-s", type=str, default="../../models/")
     parser.add_argument("--runs_dir", "-r", type=str, default="../../runs/")
     parser.add_argument("--lr", type=float, default=1e-4)

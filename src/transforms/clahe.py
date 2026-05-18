@@ -7,6 +7,8 @@ Nhận và trả về ảnh dạng numpy.
 
 import cv2
 import numpy as np
+from PIL import Image
+
 
 class CLAHETransform:
     def __init__(self, clip_limit=2.0, tile_grid_size=(5,5)):
@@ -26,4 +28,4 @@ class CLAHETransform:
 
         img_np = clahe.apply(img_np)
 
-        return img_np
+        return Image.fromarray(img_np)

@@ -8,6 +8,8 @@ Nhận và trả về ảnh dạng numpy.
 import random
 import cv2
 import numpy as np
+from PIL import Image
+
 
 class SharpenTransform:
     def __init__(self, p=0.5):
@@ -22,5 +24,5 @@ class SharpenTransform:
                 [0, -1, 0]
             ])
             img_np = cv2.filter2D(img_np, -1, kernel)
-            return img_np
+            return Image.fromarray(img_np)
         return img
