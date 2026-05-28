@@ -4,7 +4,7 @@ from PIL import Image
 from torch.utils.data import Dataset
 from collections import defaultdict
 
-class PalmDataset(Dataset):
+class TripletDataset(Dataset):
     def __init__(self, root, transform=None):
         self.root = root
         self.transform = transform
@@ -21,7 +21,7 @@ class PalmDataset(Dataset):
 
         self.label_to_indices = defaultdict(list)
 
-        num_per_person = 6 if "train" in root else 2
+        num_per_person = 10
 
         for idx in range(len(files_1)):
 

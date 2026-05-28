@@ -14,21 +14,25 @@ venv/
 
 # Logs
 *.log
-logs/
+logs/*
+!logs/.gitkeep
 
 # Dataset
-data/
+data/*
+!data/.gitkeep
 
 # Model weights
-models/
-*.pth
+models/*
+!models/.gitkeep
 
 # Tensorboard
-runs/
+runs/*
+!runs/.gitkeep
 
 # OS
 .DS_Store
 Thumbs.db
 
 # Storage
-storage/
+storage/*
+!storage/.gitkeep

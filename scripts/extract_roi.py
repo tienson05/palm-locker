@@ -3,6 +3,8 @@ import time
 import cv2
 import mediapipe as mp
 import numpy as np
+from tqdm import tqdm
+
 
 # Hàm lấy ROI lòng bàn tay
 def crop_palm_roi(image, landmarks, roi_size=224):
@@ -78,16 +80,17 @@ hands = mp_hands.Hands(
     min_detection_confidence=0.5
 )
 # Paths
-path = "../data/raw/session1"  # or session2
-out = "../../data/processed/session1" # or session2
+path = "../data/raw/IITD/Right Hand"  # or session2
+out = "../data/processed/IITD/Right_Hand" # or session2
 imgs = os.listdir(path)
+pg_bar = tqdm(imgs)
 
 count = 0
 time_sum = 0
 not_detected = []
 not_readed =  []
 
-for idx, img_name in enumerate(imgs):
+for img_name in pg_bar:
     name = os.path.splitext(img_name)[0]
     start = time.time()
 
@@ -113,7 +116,6 @@ for idx, img_name in enumerate(imgs):
         count += 1
     else:
         not_detected.append(img_name)
-    print(idx)
 
 print(f"Detected {count} images")
 print(f"Total time: {time_sum:.4f} seconds")
