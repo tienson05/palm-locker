@@ -10,13 +10,13 @@ Server làm việc với esp32_cam (nhận ảnh, phản hồi lại)
 """
 
 # WORKER
-MODEL_NAME = "D:/Projects/Personal/PalmLocker/models/palmnet_v1.pth"
-ESP32_IDR = "http://172.20.10.4/open"
+MODEL_NAME = "D:/Projects/Personal/PalmLocker/models/palmnet_arcface_best.pth"
+ESP32_IDR = "http://172.20.10.6/open"
 
 SEND_IMAGES = 5 # mỗi lần gửi đồ hệ thống sẽ lấy 5 ảnh lòng bàn tay của người dùng
 TAKE_IMAGES = 2 # mỗi lần lấy đồ hệ thống sẽ lấy 2 ảnh lòng bàn tay của người dùng
 
-THRESHOLD = 0.9 # lớn hơn ngưỡng này được xem là cùng 1 người
+THRESHOLD = 0.65 # lớn hơn ngưỡng này được xem là cùng 1 người
 
 # SERVER
 PORT = 5000 # cổng server chạy

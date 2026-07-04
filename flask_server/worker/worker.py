@@ -2,7 +2,6 @@ from flask_server.common.dao import dao
 from flask_server.worker.locker import send_locker
 from flask_server.worker.functional import compare_embeddings, save_to_db
 from flask_server.worker.model import load_model, get_mean_embedding
-from rich import print
 
 def worker(image_queue, ws_queue):
     print("[WORKER] Starting...")

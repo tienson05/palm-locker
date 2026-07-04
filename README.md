@@ -2,6 +2,10 @@
 
 AI-powered biometric locker authentication system using palmprint recognition, realtime server communication, and embedded hardware control.
 
+## 🎥 Demo
+
+▶️ [Watch Demo Video](docs/videos/demo.mp4)
+
 ---
 
 # Overview
