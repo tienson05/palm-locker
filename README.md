@@ -4,7 +4,7 @@ AI-powered biometric locker authentication system using palmprint recognition, r
 
 ## 🎥 Demo
 
-▶️ [Watch Demo Video](docs/videos/demo.mp4)
+▶️ [Watch Demo Video](https://drive.google.com/file/d/1XvmbyGqb-8U7NaBYBQBwI1W84gFA-sKH/view?usp=sharing)
 
 ---
 
