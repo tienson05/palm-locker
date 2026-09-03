@@ -23,9 +23,7 @@ A user simply places their palm in front of a camera. The system detects, valida
 
 ### Demo
 
-🎥 **[▶ Click here to watch PalmLocker Demo Video](docs/videos/demo.mp4)**
-
-<video src="docs/videos/demo.mp4" controls width="100%"></video>
+🎥 **[▶ Watch PalmLocker Demo Video on Google Drive](https://drive.google.com/file/d/1XvmbyGqb-8U7NaBYBQBwI1W84gFA-sKH/view?usp=sharing)**
 
 ---
 

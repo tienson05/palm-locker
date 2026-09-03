@@ -133,7 +133,6 @@ yarn-error.log*
 *.webm
 docs/videos/*
 !docs/videos/.gitkeep
-!docs/videos/demo.mp4
 
 # =====================================================================
 # Database & Cache
