@@ -23,6 +23,8 @@ A user simply places their palm in front of a camera. The system detects, valida
 
 ### Demo
 
+🎥 **[▶ Click here to watch PalmLocker Demo Video](docs/videos/demo.mp4)**
+
 <video src="docs/videos/demo.mp4" controls width="100%"></video>
 
 ---
@@ -194,7 +196,7 @@ Two publicly available palmprint datasets are used:
 
 | Dataset | Usage | Notes |
 |---|---|---|
-| [Tongji Palmprint Database](http://sse.tongji.edu.cn/linzhang/CR/Palmprint/Palmprint.htm) | Training | ~600 subjects, 2 sessions, 10 images/session |
+| [Tongji Palmprint Database](https://cslinzhang.github.io/ContactlessPalm/) | Training | ~600 subjects, 2 sessions, 10 images/session |
 | [IITD Palmprint Database](https://www4.comp.polyu.edu.hk/~csajaykr/IITD/Database_Palm.htm) | Validation & Testing | 230 subjects, 2 sessions |
 
 ### Preprocessing
