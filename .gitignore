@@ -57,9 +57,18 @@ models/*
 !models/.gitkeep
 
 # =====================================================================
-# Datasets & Large Archives
+# Dữ liệu Training & Datasets
 # =====================================================================
-# Archive formats
+training/data/
+**/training/data/
+data/
+**/data/
+dataset/
+datasets/
+**/dataset/
+**/datasets/
+
+# File nén & dữ liệu mảng lớn dùng cho training
 *.zip
 *.tar
 *.tar.gz
@@ -68,39 +77,30 @@ models/*
 *.7z
 *.bz2
 *.xz
+*.npy
+*.npz
+*.mat
 
-# Datasets
-data/*
-!data/.gitkeep
-**/data/*
-!**/data/.gitkeep
-
-# Storage / captures / runtime uploads
+# Storage / ảnh nhận diện realtime / runtime captures
 storage/*
 !storage/.gitkeep
 **/storage/*
 !**/storage/.gitkeep
 
 # =====================================================================
-# Training Outputs, Logs & TensorBoard
+# Kết quả Training, Logs & TensorBoard
 # =====================================================================
 *.log
 logs/
 **/logs/
-!logs/.gitkeep
-!**/logs/.gitkeep
-
-# TensorBoard runs
-runs/*
-!runs/.gitkeep
-**/runs/*
-!**/runs/.gitkeep
-
-# Training results / checkpoints
-results/*
-!results/.gitkeep
-**/results/*
-!**/results/.gitkeep
+training/runs/
+runs/
+**/runs/
+training/results/
+results/
+**/results/
+checkpoints/
+**/checkpoints/
 
 # =====================================================================
 # Web / Java / Maven / Node.js
