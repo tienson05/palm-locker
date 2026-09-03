@@ -1,38 +1,180 @@
-# Python cache
+# =====================================================================
+# Python Cache & Bytecode
+# =====================================================================
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+*.pyd
+*.so
 
-# Virtual environment
-venv/
-.env
+# C extensions & build outputs
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# =====================================================================
+# Virtual Environments
+# =====================================================================
 .venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# PyCharm
-.idea/
-*.iml
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
 
-# Logs
-*.log
-logs/*
-!logs/.gitkeep
+# =====================================================================
+# Machine Learning: Models, Weights & Checkpoints (Heavy Files)
+# =====================================================================
+*.pth
+*.pt
+*.onnx
+*.tflite
+*.h5
+*.hdf5
+*.ckpt
+*.weights
+*.safetensors
+*.bin
+*.pb
+*.pkl
+*.pickle
+*.joblib
 
-# Dataset
-data/*
-!data/.gitkeep
-
-# Model weights
+# Models directory
 models/*
 !models/.gitkeep
 
-# Tensorboard
-runs/*
-!runs/.gitkeep
+# =====================================================================
+# Datasets & Large Archives
+# =====================================================================
+# Archive formats
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.bz2
+*.xz
 
-# OS
-.DS_Store
-Thumbs.db
+# Datasets
+data/*
+!data/.gitkeep
+**/data/*
+!**/data/.gitkeep
 
-# Storage
+# Storage / captures / runtime uploads
 storage/*
 !storage/.gitkeep
+**/storage/*
+!**/storage/.gitkeep
+
+# =====================================================================
+# Training Outputs, Logs & TensorBoard
+# =====================================================================
+*.log
+logs/
+**/logs/
+!logs/.gitkeep
+!**/logs/.gitkeep
+
+# TensorBoard runs
+runs/*
+!runs/.gitkeep
+**/runs/*
+!**/runs/.gitkeep
+
+# Training results / checkpoints
+results/*
+!results/.gitkeep
+**/results/*
+!**/results/.gitkeep
+
+# =====================================================================
+# Web / Java / Maven / Node.js
+# =====================================================================
+# Java & Maven
+target/
+**/target/
+*.class
+*.war
+*.ear
+.mvn/wrapper/maven-wrapper.jar
+
+# Node.js / Frontend
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# =====================================================================
+# Media Files (Heavy Videos / Recordings)
+# =====================================================================
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+*.flv
+*.webm
+docs/videos/*
+!docs/videos/.gitkeep
+
+# =====================================================================
+# Database & Cache
+# =====================================================================
+*.db
+*.sqlite
+*.sqlite3
+
+# =====================================================================
+# Hardware / Embedded (ESP32, Arduino, PlatformIO)
+# =====================================================================
+.pio/
+.pioenvs/
+.piolibdeps/
+hardware/**/build/
+*.hex
+*.elf
+
+# =====================================================================
+# IDEs & Editor configurations
+# =====================================================================
+.idea/
+**/.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+**/.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# =====================================================================
+# Operating System files
+# =====================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Issue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>Report New Issue</h1>
+
+        <div class="chart-box ticket-container">
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label for="ticketSessionId">Session ID:</label>
+                    <input type="text" id="ticketSessionId" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketReason">Issue Description:</label>
+                    <textarea id="ticketReason" rows="5"
+                        placeholder="Nhập lý do hoặc mô tả sự cố tại đây..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit-ticket">Submit Ticket</button>
+            </form>
+            <p id="responseMessage"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

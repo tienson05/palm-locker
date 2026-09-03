@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tủ đồ - Locker Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Locker Admin</h2>
+        <a href="index.html">🏠 Dashboard</a>
+        <a href="lockers.html" class="active">📦 Quản lý Tủ đồ</a>
+        <a href="users.html">🕒 Phiên sử dụng</a>
+        <a href="support.html">📩 Quản lý Ticket</a>
+    </div>
+
+    <div class="main">
+        <header style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Quản lý Danh sách Tủ</h1>
+
+            <button class="btn-add"
+                    style="background: #3b82f6; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer;"
+                    onclick="showLockerModal()">
+                + Thêm Tủ Mới
+            </button>
+        </header>
+
+        <div class="toolbar"
+             style="margin-top: 20px; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+
+            <div style="display: flex; flex-direction: row; align-items: flex-end; gap: 15px; flex-wrap: nowrap;">
+
+                <!-- Từ khóa -->
+                <div style="flex: 2; display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-weight: bold; font-size: 13px;">
+                        Từ khóa:
+                    </label>
+
+                    <input type="text"
+                           id="lockerSearch"
+                           placeholder="Mã tủ hoặc vị trí..."
+                           style="padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; width: 100%;">
+                </div>
+
+                <!-- Trạng thái -->
+                <div style="flex: 1.5; display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-weight: bold; font-size: 13px;">
+                        Trạng thái:
+                    </label>
+
+                    <select id="statusFilter"
+                            style="padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; background: white;">
+                        <option value="ALL">-- Tất cả --</option>
+                        <option value="available">AVAILABLE</option>
+                        <option value="occupied">OCCUPIED</option>
+                        <option value="error">ERROR</option>
+                    </select>
+                </div>
+
+                <!-- Tìm kiếm -->
+                <div style="flex: 1;">
+                    <button onclick="filterLockers()"
+                            style="background: #3b82f6; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; width: 100%; height: 40px; font-weight: bold;">
+                        Tìm kiếm
+                    </button>
+                </div>
+
+                <!-- Làm mới -->
+                <div style="flex: 0.8;">
+                    <button onclick="resetFilters()"
+                            style="background: #0c2fcc; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; width: 100%; height: 40px;">
+                        Làm mới
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="table-container" style="margin-top: 20px;">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Vị Trí</th>
+                    <th>Trạng Thái</th>
+                    <th>Hành Động</th>
+                </tr>
+                </thead>
+
+                <tbody id="lockerTable">
+                <tr>
+                    <td colspan="4"
+                        style="text-align:center; padding:40px; color:#94a3b8;">
+                        Đang tải danh sách tủ đồ...
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="lockerModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Thông tin Tủ đồ</h2>
+            <hr>
+            <input type="hidden" id="editFlag">
+
+            <div id="error-message"
+                style="display: none; color: #ef4444; background: #fee2e2; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 14px; border: 1px solid #fecaca; text-align: center; font-weight: bold;">
+            </div>
+
+            <div class="form-group" id="idInputGroup">
+                <label for="lockerId">Mã tủ (ID):</label>
+                <input type="text" id="lockerId" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="lockerLocation">Vị trí tủ:</label>
+                <input type="text" id="lockerLocation" placeholder="Ví dụ: Tầng 1 - Khu A">
+            </div>
+
+            <div class="form-group" id="statusGroup">
+                <label for="lockerStatus">Trạng thái hiện tại:</label>
+                <select id="lockerStatus">
+                    <option value="available">AVAILABLE</option>
+                    <option value="occupied">OCCUPIED</option>
+                    <option value="error">ERROR</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-save" onclick="saveLocker()">Lưu thông tin</button>
+                <button class="btn-cancel" onclick="closeModal()">Hủy bỏ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <h2>Báo Cáo Sự Cố Tủ <span id="displayLockerId" style="color: #3b82f6;"></span></h2>
+            <hr>
+
+            <div class="form-group">
+                <label>Mã tủ bị lỗi:</label>
+                <input type="text" id="ticketLockerId" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Thời gian tạo báo cáo:</label>
+                <input type="text" id="ticketTime" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="ticketReason">Lý do/Nội dung sự cố:</label>
+                <textarea id="ticketReason" rows="4"
+                    placeholder="Ví dụ: Tủ không mở được dù đã quét vân tay, kẹt khóa..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Danh sách hình ảnh lòng bàn tay:</label>
+                <div id="imageGallery" style="
+                display: grid; 
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+                gap: 10px; 
+                border: 2px dashed #cbd5e1;
+                border-radius: 10px;
+                padding: 10px;
+                background: #f1f5f9;
+                min-height: 150px;
+                max-height: 300px;
+                overflow-y: auto;">
+
+                    <!-- Ảnh sẽ được tự động chèn vào đây bằng Javascript -->
+                    <div id="imagePlaceholder"
+                        style="grid-column: 1 / -1; text-align: center; color: #64748b; padding-top: 40px;">
+                        <span style="font-size: 30px;">🖐️</span>
+                        <p style="font-size: 12px;">Đang tải danh sách ảnh...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-save" onclick="submitTicket()">Gửi Báo Cáo</button>
+                <button class="btn-cancel" onclick="closeTicketModal()">Hủy bỏ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="errorDialog" class="error-dialog-overlay" style="display: none;">
+        <div class="error-dialog-box">
+            <div class="error-dialog-header">
+                <span>ERROR</span>
+                <button class="close-x" onclick="closeErrorDialog()">×</button>
+            </div>
+            <div class="error-dialog-body">
+                <div class="error-icon">×</div>
+                <p id="errorDialogMessage">An unexpected error has occurred!</p>
+            </div>
+            <div class="error-dialog-footer">
+                <button class="btn-ok" onclick="closeErrorDialog()">OK</button>
+            </div>
+        </div>
+    </div>
+    <div id="successDialog" class="success-dialog-overlay" style="display: none;">
+        <div class="success-dialog-box">
+            <div class="success-dialog-header">
+                <span>SUCCESS</span>
+                <button class="close-x" onclick="closeSuccessDialog()">×</button>
+            </div>
+
+            <div class="success-dialog-body">
+                <div class="success-icon">✓</div>
+                <p id="successDialogMessage">Thao tác thành công!</p>
+            </div>
+
+            <div class="success-dialog-footer">
+                <button class="btn-ok" onclick="closeSuccessDialog()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
